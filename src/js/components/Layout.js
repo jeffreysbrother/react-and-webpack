@@ -6,18 +6,22 @@ import Footer from "./Footer";
 export default class Layout extends React.Component {
 	constructor() {
 		super();
-		this.state = {name: "james"};
+		this.state = {
+			title: "Welcome",
+		};
 	}
+
+	changeTitle(title) {
+		this.setState({title});
+	}
+
 	render() {
-		setTimeout(() =>{
-			this.setState({name: "Bob"});
-		}, 1000);
 		return (
 			<div>
-			{this.state.name}
-				<Header />
+				<Header changeTitle={this.changeTitle.bind(this)} title={this.state.title}/>
 				<Footer />
 			</div>
 		);
 	}
+
 }
